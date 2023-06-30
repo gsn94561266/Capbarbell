@@ -68,9 +68,12 @@ router.put('/edit', async (req, res) => {
   }
 });
 
-router.post('/delete', async (req, res) => {
+router.put('/delete', async (req, res) => {
   try {
-    await pool.execute('DELETE FROM customer WHERE ID=?', [req.body.ID]);
+    await pool.execute('UPDATE customer SET Status = ? WHERE ID = ?', [
+      0,
+      req.body.ID,
+    ]);
     res
       .status(200)
       .json({ success: true, message: 'Customer deleted successfully.' });

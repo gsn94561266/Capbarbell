@@ -6,7 +6,7 @@ const pool = require('../utils/db');
 router.get('/', async (req, res, next) => {
   try {
     let [data] = await pool.execute(
-      'SELECT * FROM `order` WHERE Status IN (1, 2, 3)'
+      'SELECT o.* FROM `order` o JOIN customer c ON o.Customer_ID = c.ID WHERE o.Status IN (1, 2, 3) AND c.Status = 1;'
     );
     // 轉換日期格式
     data = data.map((item) => {

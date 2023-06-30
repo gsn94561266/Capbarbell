@@ -88,7 +88,7 @@ const Customer = ({ data, salesTotal, setReloadData }) => {
   const handleDelete = async (item) => {
     setShowMsgModal(true);
     try {
-      const res = await axios.post('http://localhost:5000/customer/delete', {
+      const res = await axios.put('http://localhost:5000/customer/delete', {
         ID: item.ID,
       });
       setReloadData(true);
@@ -174,22 +174,26 @@ const Customer = ({ data, salesTotal, setReloadData }) => {
         Cell: ({ row }) => (
           <>
             {salesTotal[row.original.ID] && (
-              <div>
-                <span className="me-1">{currentYear - 2}:</span>
-                <span>{salesTotal[row.original.ID][currentYear - 2]}</span>
-              </div>
-            )}
-            {salesTotal[row.original.ID] && (
-              <div>
-                <span className="me-1">{currentYear - 1}:</span>
-                <span>{salesTotal[row.original.ID][currentYear - 1]}</span>
-              </div>
-            )}
-            {salesTotal[row.original.ID] && (
-              <div>
-                <span className="me-1">{currentYear}:</span>
-                <span>{salesTotal[row.original.ID][currentYear]}</span>
-              </div>
+              <>
+                {salesTotal[row.original.ID][currentYear - 2] !== undefined && (
+                  <div>
+                    <span className="me-1">{currentYear - 2}:</span>
+                    <span>{salesTotal[row.original.ID][currentYear - 2]}</span>
+                  </div>
+                )}
+                {salesTotal[row.original.ID][currentYear - 1] !== undefined && (
+                  <div>
+                    <span className="me-1">{currentYear - 1}:</span>
+                    <span>{salesTotal[row.original.ID][currentYear - 1]}</span>
+                  </div>
+                )}
+                {salesTotal[row.original.ID][currentYear] !== undefined && (
+                  <div>
+                    <span className="me-1">{currentYear}:</span>
+                    <span>{salesTotal[row.original.ID][currentYear]}</span>
+                  </div>
+                )}
+              </>
             )}
           </>
         ),
