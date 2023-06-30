@@ -1,0 +1,16 @@
+.table-container {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+  cursor: default;
+
+  tr.hover:hover td {
+    background-color: #eeeeee !important;
+  }
+
+  .sticky-column {
+    position: sticky;
+    left: 0;
+  }
+}

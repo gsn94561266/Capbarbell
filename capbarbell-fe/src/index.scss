@@ -1,0 +1,13 @@
+// 自訂顏色
+$primary: #056983;
+$info: #34b7b9;
+$purple: #3f51b5;
+
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: $light;
+}
+.bg-purple {
+  background-color: $purple;
+}
