@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './Navbar.scss';
 // 圖示
 import { MdOutlinePeopleAlt, MdOutlineDescription } from 'react-icons/md';
 
